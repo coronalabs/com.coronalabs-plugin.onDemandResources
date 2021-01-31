@@ -1,0 +1,107 @@
+--
+-- For more information on build.settings see the Corona SDK Build Guide at:
+-- http://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+--
+
+settings =
+{
+    plugins =
+    {
+        -- key is the name passed to Lua's 'require()'
+        ["plugin.onDemandResources"] =
+        {
+            -- required
+            publisherId = "com.coronalabs",
+            supportedPlatforms = { 
+                appletvos = true,
+            },
+        },
+    },
+
+	orientation =
+	{
+		-- Supported values for orientation:
+		-- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+
+		default = { "portrait" },
+		supported = { "portrait", "portraitUpsideDown", "landscapeLeft", "landscapeRight" },
+
+	},
+    
+    excludeFiles =
+    {
+        -- Include only the necessary icon files on each platform
+        iphone = { "Icon-*dpi.png", },
+        android = { "Icon.png", "Icon-Small-*.png", "Icon*@2x.png", },
+    },    
+	
+	iphone =
+    {
+        onDemandResources =
+        {
+            dlc="Readme.markdown"
+        },
+        plist =
+        {
+            UIStatusBarHidden = false,
+            UIPrerenderedIcon = true, -- set to false for "shine" overlay
+            --UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
+
+            CFBundleIconFiles =
+            {
+                "Icon.png",
+                "Icon@2x.png",
+                "Icon-167.png",
+                "Icon-60.png",
+                "Icon-60@2x.png",
+                "Icon-60@3x.png",
+                "Icon-72.png",
+                "Icon-72@2x.png",
+                "Icon-76.png",
+                "Icon-76@2x.png",
+                "Icon-Small.png",
+                "Icon-Small@2x.png",
+                "Icon-Small@3x.png",
+                "Icon-Small-40.png",
+                "Icon-Small-40@2x.png",
+                "Icon-Small-50.png",
+                "Icon-Small-50@2x.png",
+            },
+        }
+    },
+	tvos = {
+		onDemandResources =
+        {
+            {tag="dlc", resource="Readme.markdown" --[[, type="install"]] --[[, type="prefetch"]] },
+        },
+        -- tvOS app icons require multiple layers, and must provide both a small and a large size.
+        icon =
+        {
+            -- A collection of 400x240 pngs, in order of top to bottom.
+            small =
+            {
+                "Icon-tvOS-Small-Pew.png",
+                "Icon-tvOS-Small-LogoA.png",
+                "Icon-tvOS-Small-LogoB.png",
+                "Icon-tvOS-Small-LogoC.png",
+                "Icon-tvOS-Small-Background.png",
+            },
+            -- A collection of 1280x768 pngs, in order of top to bottom.
+            large =
+            {
+                "Icon-tvOS-Large-Pew.png",
+                "Icon-tvOS-Large-LogoA.png",
+                "Icon-tvOS-Large-LogoB.png",
+                "Icon-tvOS-Large-LogoC.png",
+                "Icon-tvOS-Large-Background.png",
+            }
+        },
+
+        -- A 1920x720 png file, displayed when your app is on the "top shelf".
+        topShelfImage = "Icon-tvOS-TopShelf.png",
+        topShelfImageWide = "Icon-tvOS-TopShelf-Wide.png",
+
+        -- A 1920x1080 png file, displayed briefly as your app loads.
+        launchImage = "Icon-tvOS-Launch.png",
+	},	
+}
