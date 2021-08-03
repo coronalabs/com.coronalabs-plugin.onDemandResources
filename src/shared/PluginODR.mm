@@ -85,10 +85,10 @@ class PluginODR
 	
 	public:
 		void DispatchLowDiskWarning();
-		void DispatchResourceAvailable(NSString *tag, bool available, long errorCode, CoronaLuaRef instanceCallback);
+		void DispatchResourceAvailable(NSString *tag, bool available, NSError* error, CoronaLuaRef instanceCallback);
 	
 	private:
-        static void PushResourceAvailableEvent(lua_State *L, NSString *tag, bool available, long errorCode);
+        static void PushResourceAvailableEvent(lua_State *L, NSString *tag, bool available, NSError* error);
 
 	
 		lua_State *fL;
@@ -160,7 +160,7 @@ class PluginODR
 	if (requestSucceeded)
 	{
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			library->DispatchResourceAvailable(self.request.tags.anyObject, requestSucceeded, 0, self.instanceCallback);
+			library->DispatchResourceAvailable(self.request.tags.anyObject, requestSucceeded, nil, self.instanceCallback);
 		}];
 		return;
 	}
@@ -171,7 +171,7 @@ class PluginODR
 		[self.request beginAccessingResourcesWithCompletionHandler:^(NSError *error) {
 			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 				requestSucceeded = (error == nil);
-				library->DispatchResourceAvailable(self.request.tags.anyObject, requestSucceeded, error.code, self.instanceCallback);
+				library->DispatchResourceAvailable(self.request.tags.anyObject, requestSucceeded, error, self.instanceCallback);
 			}];
 		}];
 	}
@@ -180,7 +180,7 @@ class PluginODR
 		[self.request conditionallyBeginAccessingResourcesWithCompletionHandler:^(BOOL resourcesAvailable) {
 			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 				requestSucceeded = resourcesAvailable;
-				library->DispatchResourceAvailable(self.request.tags.anyObject, requestSucceeded, 0, self.instanceCallback);
+				library->DispatchResourceAvailable(self.request.tags.anyObject, requestSucceeded, nil, self.instanceCallback);
 			}];
 		}];
 	}
@@ -712,7 +712,7 @@ PluginODR::DispatchLowDiskWarning()
 }
 
 void
-PluginODR::PushResourceAvailableEvent(lua_State *L, NSString *tag, bool available, long errorCode)
+PluginODR::PushResourceAvailableEvent(lua_State *L, NSString *tag, bool available, NSError* error)
 {
 	CoronaLuaNewEvent( L, kEvent );
 	
@@ -722,19 +722,25 @@ PluginODR::PushResourceAvailableEvent(lua_State *L, NSString *tag, bool availabl
 	lua_pushboolean( L, !available );
 	lua_setfield( L, -2, CoronaEventIsErrorKey());
 	
-	lua_pushstring( L, [tag UTF8String]);
-	lua_setfield( L, -2, "tag" );
-	
-	if (errorCode)
+	if(tag)
 	{
-		lua_pushnumber( L, errorCode);
+		lua_pushstring( L, [tag UTF8String]);
 		lua_setfield( L, -2, "tag" );
+	}
+	
+	if (error)
+	{
+		lua_pushnumber( L, error.code);
+		lua_setfield( L, -2, "errorCode" );
+		
+		lua_pushstring( L, [error.localizedDescription UTF8String]);
+		lua_setfield( L, -2, "error" );
 	}
 	
 }
 
 void
-PluginODR::DispatchResourceAvailable(NSString *tag, bool available, long errorCode, CoronaLuaRef instanceCallback)
+PluginODR::DispatchResourceAvailable(NSString *tag, bool available, NSError* error, CoronaLuaRef instanceCallback)
 {
 	if (!fL)
 	{
@@ -744,13 +750,13 @@ PluginODR::DispatchResourceAvailable(NSString *tag, bool available, long errorCo
 	
 	if (instanceCallback)
 	{
-		PushResourceAvailableEvent(L, tag, available, errorCode);
+		PushResourceAvailableEvent(L, tag, available, error);
 		CoronaLuaDispatchEvent( L, instanceCallback, 0 );
 	}
 	
 	if (GetListener())
 	{
-		PushResourceAvailableEvent(L, tag, available, errorCode);
+		PushResourceAvailableEvent(L, tag, available, error);
 		CoronaLuaDispatchEvent( L, GetListener(), 0 );
 	}
 }

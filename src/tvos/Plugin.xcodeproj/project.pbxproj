@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -25,7 +25,7 @@
 		A49EC18A1BD779560093F529 /* Corona_plugin_onDemandResources.h in Headers */ = {isa = PBXBuildFile; fileRef = A49EC1891BD779560093F529 /* Corona_plugin_onDemandResources.h */; };
 		A49EC1991BD779C10093F529 /* PluginODR.h in Headers */ = {isa = PBXBuildFile; fileRef = A49EC1971BD779C10093F529 /* PluginODR.h */; };
 		A49EC19A1BD779C10093F529 /* PluginODR.mm in Sources */ = {isa = PBXBuildFile; fileRef = A49EC1981BD779C10093F529 /* PluginODR.mm */; };
-		A49EC1AB1BD77C530093F529 /* CoronaCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49EC1AA1BD77C530093F529 /* CoronaCards.framework */; };
+		F58421FB26B9A221000C5A19 /* CoronaCards.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58421FA26B9A21E000C5A19 /* CoronaCards.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -34,11 +34,13 @@
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.lua";
 			fileType = pattern.proxy;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).c",
 			);
-			script = "CORONA_DIR=$SRCROOT/CoronaEnterprise/Corona\nCORONA_MAC_BIN_DIR=$CORONA_DIR/mac/bin\n\nif [ -e \"$CORONA_MAC_BIN_DIR/lua\" ]; then\n    LUA_DIR=$CORONA_MAC_BIN_DIR/lua\nelse\n    echo \"Could not find proper 32-bit lua build in: $CORONA_MAC_BIN_DIR/lua\"\n    exit 1\nfi\n\necho $CORONA_MAC_BIN_DIR/lua2c.sh $INPUT_FILE_PATH $DERIVED_FILE_DIR $CONFIGURATION\n\"$CORONA_MAC_BIN_DIR/lua2c.sh\" \"$INPUT_FILE_PATH\" \"$DERIVED_FILE_DIR\" \"$CONFIGURATION\" \"$CORONA_MAC_BIN_DIR\"";
+			script = "CORONA_DIR=$SRCROOT/CoronaEnterprise/Corona\nCORONA_MAC_BIN_DIR=$CORONA_DIR/mac/bin\n\nif [ -e \"$CORONA_MAC_BIN_DIR/lua\" ]; then\n    LUA_DIR=$CORONA_MAC_BIN_DIR/lua\nelse\n    echo \"Could not find proper 32-bit lua build in: $CORONA_MAC_BIN_DIR/lua\"\n    exit 1\nfi\n\necho $CORONA_MAC_BIN_DIR/lua2c.sh $INPUT_FILE_PATH $DERIVED_FILE_DIR $CONFIGURATION\n\"$CORONA_MAC_BIN_DIR/lua2c.sh\" \"$INPUT_FILE_PATH\" \"$DERIVED_FILE_DIR\" \"$CONFIGURATION\" \"$CORONA_MAC_BIN_DIR\"\n";
 		};
 /* End PBXBuildRule section */
 
@@ -52,13 +54,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F58421F926B9A1CA000C5A19 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A49EC1861BD779560093F529 /* Corona_plugin_onDemandResources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Corona_plugin_onDemandResources.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49EC1891BD779560093F529 /* Corona_plugin_onDemandResources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Corona_plugin_onDemandResources.h; path = Plugin/Corona_plugin_onDemandResources.h; sourceTree = "<group>"; };
 		A49EC18B1BD779560093F529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Plugin/Info.plist; sourceTree = "<group>"; };
 		A49EC1971BD779C10093F529 /* PluginODR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginODR.h; path = ../shared/PluginODR.h; sourceTree = "<group>"; };
 		A49EC1981BD779C10093F529 /* PluginODR.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PluginODR.mm; path = ../shared/PluginODR.mm; sourceTree = "<group>"; };
-		A49EC1AA1BD77C530093F529 /* CoronaCards.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoronaCards.framework; path = CoronaEnterprise/Corona/tvos/frameworks/CoronaCards.framework; sourceTree = "<group>"; };
+		F58421FA26B9A21E000C5A19 /* CoronaCards.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CoronaCards.xcframework; path = CoronaEnterprise/Corona/tvos/frameworks/CoronaCards.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A49EC1AB1BD77C530093F529 /* CoronaCards.framework in Frameworks */,
+				F58421FB26B9A221000C5A19 /* CoronaCards.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +119,7 @@
 		A49EC1AC1BD77C5A0093F529 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A49EC1AA1BD77C530093F529 /* CoronaCards.framework */,
+				F58421FA26B9A21E000C5A19 /* CoronaCards.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,6 +147,7 @@
 				A49EC1821BD779560093F529 /* Frameworks */,
 				A49EC1831BD779560093F529 /* Headers */,
 				A49EC1841BD779560093F529 /* Resources */,
+				F58421F926B9A1CA000C5A19 /* Embed Frameworks */,
 			);
 			buildRules = (
 				A40A8FE21BD97297001D2038 /* PBXBuildRule */,
@@ -165,6 +181,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = A49EC17C1BD779560093F529;
@@ -338,11 +355,15 @@
 				);
 				INFOPLIST_FILE = Plugin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.coronalabs.Corona-plugin-onDemandResources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/CoronaEnterprise/Corona/tvos/frameworks/CoronaCards.framework/PrivateHeaders";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/CoronaEnterprise/Corona/tvos/frameworks/CoronaCards.xcframework/tvos-arm64/CoronaCards.framework/PrivateHeaders";
 			};
 			name = Debug;
 		};
@@ -359,11 +380,15 @@
 				);
 				INFOPLIST_FILE = Plugin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.coronalabs.Corona-plugin-onDemandResources";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/CoronaEnterprise/Corona/tvos/frameworks/CoronaCards.framework/PrivateHeaders";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/CoronaEnterprise/Corona/tvos/frameworks/CoronaCards.xcframework/tvos-arm64/CoronaCards.framework/PrivateHeaders";
 			};
 			name = Release;
 		};

@@ -1,1 +1,2 @@
 plugins/*.tgz
+src/ios/libplugin_onDemandResources.a

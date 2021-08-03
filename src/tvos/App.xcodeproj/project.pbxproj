@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,12 +11,13 @@
 		A49EC14F1BD76ECE0093F529 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A49EC14E1BD76ECE0093F529 /* AppDelegate.m */; };
 		A49EC1551BD76ECE0093F529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49EC1531BD76ECE0093F529 /* Main.storyboard */; };
 		A49EC1571BD76ECE0093F529 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A49EC1561BD76ECE0093F529 /* Assets.xcassets */; };
-		A49EC1B31BD77E410093F529 /* CoronaCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49EC1A11BD77B680093F529 /* CoronaCards.framework */; };
-		A49EC1B41BD77E410093F529 /* CoronaCards.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A49EC1A11BD77B680093F529 /* CoronaCards.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F54AAC4F1C52D8C900CE2EC5 /* Corona_plugin_odr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49EC1A91BD77C3A0093F529 /* Corona_plugin_odr.framework */; };
-		F54AAC501C52D8C900CE2EC5 /* Corona_plugin_odr.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A49EC1A91BD77C3A0093F529 /* Corona_plugin_odr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F54AAC4F1C52D8C900CE2EC5 /* Corona_plugin_onDemandResources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49EC1A91BD77C3A0093F529 /* Corona_plugin_onDemandResources.framework */; };
+		F54AAC501C52D8C900CE2EC5 /* Corona_plugin_onDemandResources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A49EC1A91BD77C3A0093F529 /* Corona_plugin_onDemandResources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F54AAC541C52D90000CE2EC5 /* Readme.markdown in Sources */ = {isa = PBXBuildFile; fileRef = F54AAC531C52D90000CE2EC5 /* Readme.markdown */; };
 		F54AAC551C52D91400CE2EC5 /* Readme.markdown in Resources */ = {isa = PBXBuildFile; fileRef = F54AAC531C52D90000CE2EC5 /* Readme.markdown */; settings = {ASSET_TAGS = (dlc, ); }; };
+		F57AA04E2657EF0C00B4AE97 /* resources in Resources */ = {isa = PBXBuildFile; fileRef = F57AA04D2657EF0C00B4AE97 /* resources */; settings = {ASSET_TAGS = (imgst, ); }; };
+		F58421FD26B9A492000C5A19 /* CoronaCards.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58421FC26B9A492000C5A19 /* CoronaCards.xcframework */; };
+		F58421FE26B9A492000C5A19 /* CoronaCards.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F58421FC26B9A492000C5A19 /* CoronaCards.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +51,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A49EC1B41BD77E410093F529 /* CoronaCards.framework in Embed Frameworks */,
-				F54AAC501C52D8C900CE2EC5 /* Corona_plugin_odr.framework in Embed Frameworks */,
+				F54AAC501C52D8C900CE2EC5 /* Corona_plugin_onDemandResources.framework in Embed Frameworks */,
+				F58421FE26B9A492000C5A19 /* CoronaCards.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +71,8 @@
 		A49EC1A11BD77B680093F529 /* CoronaCards.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoronaCards.framework; path = CoronaEnterprise/Corona/tvos/frameworks/CoronaCards.framework; sourceTree = SOURCE_ROOT; };
 		A49EC1AE1BD77C890093F529 /* main.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.lua; path = ../Corona/main.lua; sourceTree = "<group>"; };
 		F54AAC531C52D90000CE2EC5 /* Readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = Readme.markdown; path = ../Readme.markdown; sourceTree = "<group>"; };
+		F57AA04D2657EF0C00B4AE97 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
+		F58421FC26B9A492000C5A19 /* CoronaCards.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CoronaCards.xcframework; path = "CoronaEnterprise/Corona/tvos/frameworks/CoronaCards.xcframework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A49EC1B31BD77E410093F529 /* CoronaCards.framework in Frameworks */,
-				F54AAC4F1C52D8C900CE2EC5 /* Corona_plugin_odr.framework in Frameworks */,
+				F54AAC4F1C52D8C900CE2EC5 /* Corona_plugin_onDemandResources.framework in Frameworks */,
+				F58421FD26B9A492000C5A19 /* CoronaCards.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,11 +91,13 @@
 		A49EC13E1BD76ECE0093F529 = {
 			isa = PBXGroup;
 			children = (
+				F57AA04D2657EF0C00B4AE97 /* resources */,
 				F54AAC531C52D90000CE2EC5 /* Readme.markdown */,
 				A49EC1911BD779870093F529 /* Plugin.xcodeproj */,
 				A49EC1491BD76ECE0093F529 /* App */,
 				A49EC17A1BD779050093F529 /* Corona */,
 				A49EC1481BD76ECE0093F529 /* Products */,
+				F58421F226B9A16C000C5A19 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,7 +142,7 @@
 		A49EC1A51BD77C3A0093F529 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A49EC1A91BD77C3A0093F529 /* Corona_plugin_odr.framework */,
+				A49EC1A91BD77C3A0093F529 /* Corona_plugin_onDemandResources.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +151,14 @@
 			isa = PBXGroup;
 			children = (
 				A49EC1A11BD77B680093F529 /* CoronaCards.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F58421F226B9A16C000C5A19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F58421FC26B9A492000C5A19 /* CoronaCards.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,6 +198,7 @@
 			attributes = {
 				KnownAssetTags = (
 					dlc,
+					imgst,
 				);
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Corona Labs";
@@ -192,6 +206,7 @@
 					A49EC1461BD76ECE0093F529 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = BG2J43EA88;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -200,6 +215,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -220,10 +236,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A49EC1A91BD77C3A0093F529 /* Corona_plugin_odr.framework */ = {
+		A49EC1A91BD77C3A0093F529 /* Corona_plugin_onDemandResources.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Corona_plugin_odr.framework;
+			path = Corona_plugin_onDemandResources.framework;
 			remoteRef = A49EC1A81BD77C3A0093F529 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -234,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F57AA04E2657EF0C00B4AE97 /* resources in Resources */,
 				A49EC1571BD76ECE0093F529 /* Assets.xcassets in Resources */,
 				A49EC1551BD76ECE0093F529 /* Main.storyboard in Resources */,
 				F54AAC551C52D91400CE2EC5 /* Readme.markdown in Resources */,
@@ -425,17 +442,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BITCODE_GENERATION_MODE = bitcode;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BG2J43EA88;
 				FRAMEWORK_SEARCH_PATHS = (
 					/Applications/CoronaEnterprise/Corona/tvos/frameworks/,
 					"$(PROJECT_DIR)/CoronaEnterprise/Corona/tvos/frameworks",
 				);
 				INFOPLIST_FILE = App/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = dlc;
-				PRODUCT_BUNDLE_IDENTIFIER = com.coronalabs.iCloudTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coronalabs.iCloudTestAppOdr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "45c1da1d-93a4-464b-9594-95c7a3cbcb77";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -445,17 +468,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BITCODE_GENERATION_MODE = bitcode;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BG2J43EA88;
 				FRAMEWORK_SEARCH_PATHS = (
 					/Applications/CoronaEnterprise/Corona/tvos/frameworks/,
 					"$(PROJECT_DIR)/CoronaEnterprise/Corona/tvos/frameworks",
 				);
 				INFOPLIST_FILE = App/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = dlc;
-				PRODUCT_BUNDLE_IDENTIFIER = com.coronalabs.iCloudTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coronalabs.iCloudTestAppOdr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "45c1da1d-93a4-464b-9594-95c7a3cbcb77";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
