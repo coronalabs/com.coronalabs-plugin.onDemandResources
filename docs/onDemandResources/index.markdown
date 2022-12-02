@@ -96,6 +96,8 @@ settings =
 
 #### [onDemandResources.request()][plugin.onDemandResources.request]
 
+#### [onDemandResources.release()][plugin.onDemandResources.release]
+
 #### [onDemandResources.progress()][plugin.onDemandResources.progress]
 
 #### [onDemandResources.pause()][plugin.onDemandResources.pause]

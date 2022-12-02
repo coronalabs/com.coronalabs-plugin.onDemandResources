@@ -69,7 +69,8 @@ class PluginODR
 		static int setEventListener( lua_State *L );
 	
 		static int request( lua_State *L );
-	
+		static int release( lua_State *L );
+
 		static int progress( lua_State *L );
 		static int pause( lua_State *L );
 		static int resume( lua_State *L );
@@ -237,6 +238,7 @@ PluginODR::Open( lua_State *L )
 		{"setDownloadPriority", setDownloadPriority},
 		{"getPreservationPriority", getPreservationPriority},
 		{"setPreservationPriority", setPreservationPriority},
+		{"release", release },
 		
 		{"path", path},
 
@@ -439,6 +441,40 @@ PluginODR::pause( lua_State *L )
 	
 	return results;
 }
+
+
+int
+PluginODR::release( lua_State *L )
+{
+	int results = 0;
+	NSString *tag = nil;
+	if ( lua_type( L, 1 ) == LUA_TSTRING )
+	{
+		tag = [NSString stringWithUTF8String:lua_tostring( L,  1 )];
+	}
+	
+	if ([tag length])
+	{
+		Self *library = ToLibrary( L );
+		
+		NSBundleResourceRequest* request = [[library->fRequests valueForKey:tag] request];
+		if (request)
+		{
+			[request endAccessingResources];
+		}
+		else
+		{
+			CoronaLuaWarning( L, "ERROR: odr.release() - called before requesting a resource" );
+		}
+	}
+	else
+	{
+		CoronaLuaWarning( L, "ERROR: odr.release() - should receive tag name as first parameter" );
+	}
+	
+	return results;
+}
+
 
 int
 PluginODR::resume( lua_State *L )

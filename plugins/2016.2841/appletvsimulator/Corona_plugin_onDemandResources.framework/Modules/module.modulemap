@@ -1,6 +1,0 @@
-framework module Corona_plugin_onDemandResources {
-  umbrella header "Corona_plugin_onDemandResources.h"
-
-  export *
-  module * { export * }
-}

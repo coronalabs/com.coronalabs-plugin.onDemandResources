@@ -10,6 +10,7 @@ end
 
 lib.setEventListener = defaultFunction
 lib.request = defaultFunction
+lib.release = defaultFunction
 lib.progress = defaultFunction
 lib.pause = defaultFunction
 lib.resume = defaultFunction
