@@ -50,8 +50,15 @@ checkError
 xcodebuild -project "$path/Plugin.xcodeproj" -configuration $CONFIG -sdk iphonesimulator
 checkError
 
-# create universal binary
-lipo -create "$path"/build/$CONFIG-iphoneos/lib$TARGET_NAME.$OUTPUT_SUFFIX "$path"/build/$CONFIG-iphonesimulator/lib$TARGET_NAME.$OUTPUT_SUFFIX -output "$OUTPUT_DIR"/lib$TARGET_NAME.$OUTPUT_SUFFIX
-checkError
-
-echo "$OUTPUT_DIR"/lib$TARGET_NAME.$OUTPUT_SUFFIX
+# Device and simulator libraries, side by side (the plugins/<build>/iphone
+# and iphone-sim layout). No merged "universal" lib: both carry an arm64
+# slice now (the simulator one for Apple-silicon Macs), which lipo can't merge.
+for PLATFORM in iphone iphone-sim
+do
+    SDK=iphoneos
+    if [ "$PLATFORM" = "iphone-sim" ]; then SDK=iphonesimulator; fi
+    mkdir -p "$OUTPUT_DIR/$PLATFORM"
+    cp "$path"/build/$CONFIG-$SDK/lib$TARGET_NAME.$OUTPUT_SUFFIX "$OUTPUT_DIR/$PLATFORM/"
+    checkError
+    echo "$OUTPUT_DIR/$PLATFORM/lib$TARGET_NAME.$OUTPUT_SUFFIX: $(lipo -archs "$OUTPUT_DIR/$PLATFORM/lib$TARGET_NAME.$OUTPUT_SUFFIX")"
+done

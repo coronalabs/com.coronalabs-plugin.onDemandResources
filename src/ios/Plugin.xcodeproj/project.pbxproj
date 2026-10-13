@@ -140,10 +140,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/CoronaEnterprise/Corona/shared/include/Corona ${SRCROOT}/CoronaEnterprise/Corona/shared/include/lua ${SRCROOT}/CoronaEnterprise/Corona/ios/include/Corona";
+				USER_HEADER_SEARCH_PATHS = "\"$(HOME)/Library/Application Support/Corona/Native/Corona/shared/include/Corona\" \"$(HOME)/Library/Application Support/Corona/Native/Corona/shared/include/lua\" \"$(HOME)/Library/Application Support/Corona/Native/Corona/ios/include/Corona\"";
 			};
 			name = Debug;
 		};
@@ -158,11 +158,11 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/CoronaEnterprise/Corona/shared/include/Corona ${SRCROOT}/CoronaEnterprise/Corona/shared/include/lua ${SRCROOT}/CoronaEnterprise/Corona/ios/include/Corona";
+				USER_HEADER_SEARCH_PATHS = "\"$(HOME)/Library/Application Support/Corona/Native/Corona/shared/include/Corona\" \"$(HOME)/Library/Application Support/Corona/Native/Corona/shared/include/lua\" \"$(HOME)/Library/Application Support/Corona/Native/Corona/ios/include/Corona\"";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -191,7 +191,8 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_BITCODE = NO;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"ARCHS[sdk=iphonesimulator*]" = "arm64 x86_64";
+				ONLY_ACTIVE_ARCH = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				OTHER_LDFLAGS = "-ObjC";
